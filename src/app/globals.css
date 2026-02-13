@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cosmic-void: #0a0a12;
+  --color-cosmic-dark: #1a1a2e;
+  --color-cosmic-navy: #16213e;
+  --color-cosmic-purple: #0f0326;
+  --color-cosmic-nebula: #533483;
+  --color-cosmic-accent: #7b2cbf;
+  --color-cosmic-star: #e0e0ff;
+  --color-cosmic-bright: #ffffff;
+  --color-cosmic-uv: #1a1a2e;
+  --color-cosmic-uv-hover: #6c63ff;
+  --font-montserrat: "Montserrat", sans-serif;
+}
+
+html {
+  background-color: var(--color-cosmic-void);
+  color: white;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: var(--font-montserrat);
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+* {
+  scrollbar-width: none;
+}
