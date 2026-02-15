@@ -1,52 +1,40 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navigation() {
-  const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 100], [0, 1]);
-  const y = useTransform(scrollY, [0, 100], [-60, 0]);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   return (
-    <motion.nav
-      style={{ opacity, y }}
-      className="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-[#0a0a12]/70 border-b border-white/5"
-    >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <span className="font-montserrat font-bold text-lg tracking-wider">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isHome ? 'bg-transparent' : 'bg-black/50 backdrop-blur-md border-b border-white/5'}`}>
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <Link href="/" className="font-montserrat font-bold text-xl tracking-wider hover:opacity-80 transition-opacity">
           <span className="text-[#6c63ff]">X</span>
           <span className="text-white">OM</span>
           <span className="text-[#6c63ff]">X</span>
           <span className="text-white">IK</span>
-        </span>
+        </Link>
 
-        <div className="hidden sm:flex gap-8 text-xs font-light tracking-[0.3em] uppercase text-white/50">
-          <a
-            href="#hero"
-            className="hover:text-white transition-colors duration-300"
-          >
-            Home
-          </a>
-          <a
-            href="#about"
-            className="hover:text-white transition-colors duration-300"
-          >
-            About
-          </a>
-          <a
-            href="#services"
-            className="hover:text-white transition-colors duration-300"
-          >
-            Services
-          </a>
-          <a
-            href="#contact"
-            className="hover:text-white transition-colors duration-300"
-          >
-            Contact
-          </a>
+        <div className="flex gap-8 text-xs font-light tracking-[0.2em] uppercase text-gray-400">
+          {[
+            { name: "About", path: "/about" },
+            { name: "Projects", path: "/projects" },
+            { name: "Gallery", path: "/gallery" },
+            { name: "Contact", path: "/contact" },
+          ].map((item) => (
+            <Link
+              key={item.name}
+              href={item.path}
+              className={`hover:text-white transition-colors duration-300 relative group ${pathname === item.path ? "text-white" : ""}`}
+            >
+              {item.name}
+              <span className={`absolute -bottom-2 left-0 w-0 h-[1px] bg-[#6c63ff] transition-all duration-300 group-hover:w-full ${pathname === item.path ? "w-full" : ""}`} />
+            </Link>
+          ))}
         </div>
       </div>
-    </motion.nav>
+    </nav>
   );
 }

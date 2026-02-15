@@ -8,8 +8,8 @@ import ScrollIndicator from "@/components/ui/ScrollIndicator";
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
-  const logoY = useTransform(scrollY, [0, 600], [0, -80]);
-  const sloganY = useTransform(scrollY, [0, 600], [0, -40]);
+  const logoY = useTransform(scrollY, [0, 600], [0, -40]);
+  const sloganY = useTransform(scrollY, [0, 600], [0, -20]);
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   return (
