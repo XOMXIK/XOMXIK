@@ -33,7 +33,7 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 1.0 }}
       >
-        The&nbsp;&nbsp;End,&nbsp;&nbsp;and&nbsp;&nbsp;Begins.
+        J.W. & S.Y. The&nbsp;&nbsp;End,&nbsp;&nbsp;and&nbsp;&nbsp;Begins.
       </motion.p>
 
       <ScrollIndicator />
